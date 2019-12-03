@@ -19,16 +19,15 @@ class UsersController < ApplicationController
         end
     end
 
-def destroy
+    def destroy
     @user = User.find(params[:id])
     if @user.save
         render json: @user, status: :destroyed
       else
         render json: @user.errors, status: :unprocessable_entity
+        end
+        @user.destroy
     end
-    @user.destroy
-end
-
 
    def show_posts
     @user = User.find(params[:id])
@@ -43,5 +42,4 @@ end
   end
 
 
-  
 end
