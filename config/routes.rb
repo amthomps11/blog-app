@@ -11,4 +11,7 @@ Rails.application.routes.draw do
   post '/posts', to: "posts#create"
   delete '/posts/:id', to:"posts#destroy"
 
+  post '/auth/login', to: 'authentication#login'
+
+
 end
