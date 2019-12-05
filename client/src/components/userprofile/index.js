@@ -1,22 +1,61 @@
 import React, { Component } from "react";
-import { getUserPosts } from "../../services/api-helper";
+import { getUserPosts, submitPost } from "../../services/api-helper";
+import NavBar from "../navbar";
 
 class UserProfile extends Component {
   constructor(props) {
     super(props);
-    this.state = { posts: [] };
+    this.state = { posts: [], postInput: "" };
   }
 
-  async getPosts() {
-    let posts = await getUserPosts(1);
+  getPosts = async () => {
+    let posts = await getUserPosts(localStorage.getItem("userId"));
     this.setState({ posts });
-  }
+  };
 
-  componentDidMount() {
-    this.getPosts();
-  }
+  renderPosts = () => {
+    return this.state.posts.map((post, index) => {
+      return <div key={index}>{post.body}</div>;
+    });
+  };
+
+  componentDidMount = async () => {
+    await this.getPosts();
+  };
+
+  handleInput = e => {
+    let { value } = e.target;
+    this.setState(prevState => ({
+      postInput: value
+    }));
+  };
+
+  handleSubmit = async e => {
+    let postData = {
+      post: {
+        body: this.state.postInput,
+        user_id: localStorage.getItem("userId")
+      }
+    };
+    await submitPost(postData);
+  };
+
   render() {
-    return <div>UserProfile</div>;
+    return (
+      <div>
+        <NavBar></NavBar>
+        UserProfile
+        <form onSubmit={this.handleSubmit}>
+          <input
+            placeholder="new post"
+            onChange={this.handleInput}
+            value={this.state.postInput}
+          ></input>
+          <button>submit post</button>
+        </form>
+        {this.renderPosts()}
+      </div>
+    );
   }
 }
 
