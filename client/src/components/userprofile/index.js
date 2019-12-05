@@ -5,7 +5,7 @@ import NavBar from "../navbar";
 class UserProfile extends Component {
   constructor(props) {
     super(props);
-    this.state = { posts: [], postInput: "" };
+    this.state = { posts: [], currentlyLoggedInUser: false, postInput: "" };
   }
 
   getPosts = async () => {

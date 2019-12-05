@@ -11,6 +11,12 @@ Rails.application.routes.draw do
   post '/posts', to: "posts#create"
   delete '/posts/:id', to:"posts#destroy"
 
+
+  get '/follows', to: "follows#index"
+  get '/follows/:id', to: "follows#show"
+  post '/follows', to: "follows#create"
+  delete '/follows/:id', to:"follows#destroy"
+
   post '/auth/login', to: 'authentication#login'
 
 

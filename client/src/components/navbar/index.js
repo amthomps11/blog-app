@@ -28,6 +28,7 @@ class NavBar extends Component {
         <ul>
           <NavLink to="/home">Home</NavLink>
           <NavLink to="/profile">Profile</NavLink>
+          <NavLink to="/userlist">Userlist</NavLink>
           <button onClick={this.handleLogout}>Sign Out</button>
         </ul>
       </>
