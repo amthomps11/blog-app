@@ -13,10 +13,12 @@ class App extends React.Component {
       users: []
     };
   }
+
   async getAllUsers() {
     let users = await getUsers();
     this.setState({ users });
   }
+
   componentDidMount() {
     this.getAllUsers();
   }

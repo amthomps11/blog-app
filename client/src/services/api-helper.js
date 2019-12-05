@@ -1,10 +1,13 @@
 import axios from "axios";
 const BASE_URL = "http://localhost:3000";
 
-// const JWT_TOKEN = localStorage.getItem("token");
+const JWT_TOKEN = localStorage.getItem("token");
 
 const apiClient = axios.create({
-  baseURL: BASE_URL
+  baseURL: BASE_URL,
+  headers: {
+    Authorization: `Bearer ${JWT_TOKEN}`
+  }
 });
 
 export const loginUser = async loginData => {
@@ -26,6 +29,7 @@ export const getUsers = async () => {
     console.log(e);
   }
 };
+
 export const getUserPosts = async userId => {
   try {
     const resp = await apiClient.get(`/users/${userId}/posts`);
