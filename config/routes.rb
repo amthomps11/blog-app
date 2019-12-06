@@ -16,6 +16,12 @@ Rails.application.routes.draw do
   get '/follows/:id', to: "follows#show"
   post '/follows', to: "follows#create"
   delete '/follows/:id', to:"follows#destroy"
+  get '/followees/:id', to: "follows#getFolloweesOfUser"
+  get '/followeeposts/:id', to: "follows#getFolloweePostsOfUser"
+
+  get '/followers/:id', to: "follows#getFollowersOfUser"
+  get '/followeeposts2/:id', to: "follows#getFolloweePostsOfUserTry2"
+
 
   post '/auth/login', to: 'authentication#login'
 

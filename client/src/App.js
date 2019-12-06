@@ -30,7 +30,7 @@ class App extends React.Component {
       <div className="app-container">
         <LoginForm />
         <Switch>
-          <Route exact path="/login" component={LoginForm} />
+          {/* <Route exact path="/" component={App} /> */}
           <Route exact path="/home" component={Homepage} />
           <Route exact path="/profile" component={UserProfile} />
           <Route exact path="/userlist" component={UserList} />

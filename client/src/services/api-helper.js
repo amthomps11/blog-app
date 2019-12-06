@@ -46,3 +46,30 @@ export const submitPost = async postData => {
     console.log(e);
   }
 };
+
+export const followUser = async followData => {
+  try {
+    await apiClient.post("/follows", followData);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+// export const getFollowees = async id => {
+//   try {
+//     let data = await apiClient.get(`/followees/${id}`);
+//   } catch (e) {
+//     console.log(e);
+//   }
+// };
+
+export const getFolloweesPosts = async id => {
+  try {
+    let resp = await apiClient.get(`/followeeposts/${id}`);
+    return resp.data;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+// export const getFollowers = async () => {};

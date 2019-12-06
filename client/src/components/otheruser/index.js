@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import NavBar from "../navbar";
-import { getUserPosts } from "../../services/api-helper";
+import { getUserPosts, followUser } from "../../services/api-helper";
 
 class OtherUser extends Component {
   constructor(props) {
@@ -22,11 +22,23 @@ class OtherUser extends Component {
   componentDidMount = async () => {
     await this.getPosts();
   };
+
+  handleFollowButton = async () => {
+    let userId = localStorage.getItem("userId");
+    let data = {
+      follow: {
+        follower_id: this.props.id,
+        followee_id: userId
+      }
+    };
+    await followUser(data);
+  };
   render() {
     return (
       <div>
         <NavBar></NavBar>
         OtherUser
+        <button onClick={this.handleFollowButton}>Follow</button>
         {this.props.id}
         {this.renderPosts()}
       </div>

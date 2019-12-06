@@ -21,7 +21,7 @@ class NavBar extends Component {
 
   render() {
     if (!this.state.loggedIn) {
-      return <Redirect to="/login"></Redirect>;
+      return <Redirect to="/"></Redirect>;
     }
     return (
       <>
