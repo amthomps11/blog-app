@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import decode from "jwt-decode";
-import { loginUser } from "../../services/api-helper";
+import { loginUser, createUser } from "../../services/api-helper";
 import { withRouter, Redirect } from "react-router-dom";
 
 class LoginForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { authData: { username: "", password: "" }, loggedIn: false };
+    this.state = {
+      authData: { username: "", password: "" },
+      registerData: { username: "", password: "" },
+      loggedIn: false
+    };
   }
 
   handleLoginButton = () => {
@@ -22,12 +26,46 @@ class LoginForm extends Component {
     this.handleLoginButton();
   };
 
-  handleInput = async e => {
+  handleRegisterButton = () => {
+    this.props.history.push("/home");
+  };
+
+  handleRegister = async e => {
+    e.preventDefault();
+    await createUser({
+      user: {
+        username: this.state.registerData.username,
+        password: this.state.registerData.password
+      }
+    });
+    // let user = {
+    //   username: this.state.username,
+    //   password: this.state.password
+    // };
+    // const userData = await loginUser(user);
+    // decode(userData.data.token);
+    // localStorage.setItem("jwt", userData.data.token);
+    // localStorage.setItem("userId", userData.data.userId);
+    // this.handleRegisterButton();
+  };
+
+  handleLoginInput = async e => {
     e.preventDefault();
     let { name, value } = e.target;
     this.setState(prevState => ({
       authData: {
         ...prevState.authData,
+        [name]: value
+      }
+    }));
+  };
+
+  handleRegisterInput = async e => {
+    e.preventDefault();
+    let { name, value } = e.target;
+    this.setState(prevState => ({
+      registerData: {
+        ...prevState.registerData,
         [name]: value
       }
     }));
@@ -46,17 +84,35 @@ class LoginForm extends Component {
             <p>Username:</p>
             <input
               name="username"
-              onChange={this.handleInput}
+              onChange={this.handleLoginInput}
               value={this.state.username}
             />
             <p>Password:</p>
             <input
               type="password"
               name="password"
-              onChange={this.handleInput}
+              onChange={this.handleLoginInput}
               value={this.state.password}
             />
             <button className="login-button">Login</button>
+          </form>
+
+          <h2>Register</h2>
+          <form onSubmit={this.handleRegister}>
+            <p>Username:</p>
+            <input
+              name="username"
+              onChange={this.handleRegisterInput}
+              value={this.state.username}
+            />
+            <p>Password:</p>
+            <input
+              type="password"
+              name="password"
+              onChange={this.handleRegisterInput}
+              value={this.state.password}
+            />
+            <button className="register-button">Register</button>
           </form>
         </div>
       </div>

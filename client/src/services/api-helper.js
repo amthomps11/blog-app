@@ -21,6 +21,15 @@ export const loginUser = async loginData => {
   }
 };
 
+export const createUser = async userData => {
+  try {
+    let resp = await apiClient.post(`/users`, userData);
+    return resp;
+  } catch (e) {
+    throw e;
+  }
+};
+
 export const getUsers = async () => {
   try {
     const resp = await apiClient.get("/users/");

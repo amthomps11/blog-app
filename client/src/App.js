@@ -1,12 +1,21 @@
+//Main
 import React from "react";
 import "./App.css";
+
+//Bootstrap
+// import "bootstrap/dist/css/bootstrap.css";
+// import "bootstrap/dist/css/bootstrap-theme.css";
+
+//React Router
+import { Route, Switch } from "react-router-dom";
 import { getUsers } from "./services/api-helper";
+
+//Components
 import UserProfile from "./components/userprofile";
 import LoginForm from "./components/loginform";
-import Homepage from "./components/homepage";
-import { Route, Switch } from "react-router-dom";
 import UserList from "./components/userlist";
 import OtherUser from "./components/otheruser";
+import Homepage from "./components/homepage";
 
 class App extends React.Component {
   constructor(props) {

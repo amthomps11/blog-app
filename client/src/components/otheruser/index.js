@@ -27,8 +27,8 @@ class OtherUser extends Component {
     let userId = localStorage.getItem("userId");
     let data = {
       follow: {
-        follower_id: this.props.id,
-        followee_id: userId
+        followee_id: this.props.id,
+        follower_id: userId
       }
     };
     await followUser(data);
