@@ -33,15 +33,8 @@ class LoginForm extends Component {
   handleRegister = async e => {
     e.preventDefault();
     await createUser({
-      user: {
-        username: this.state.registerData.username,
-        password: this.state.registerData.password
-      }
+      user: this.state.registerData
     });
-    // let user = {
-    //   username: this.state.username,
-    //   password: this.state.password
-    // };
     // const userData = await loginUser(user);
     // decode(userData.data.token);
     // localStorage.setItem("jwt", userData.data.token);
