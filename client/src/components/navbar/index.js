@@ -8,28 +8,50 @@ class NavBar extends Component {
   }
 
   handleLogoutButton = () => {
-    let loggedIn = !this.state.loggedIn;
-    this.setState({ loggedIn });
+    // let loggedIn = !this.state.loggedIn;
+    // this.setState({ loggedIn });
   };
 
-  handleLogout = async e => {
+  handleLogout = e => {
     e.preventDefault();
     localStorage.removeItem("jwt");
     localStorage.removeItem("userId");
     this.handleLogoutButton();
+    let loggedIn = !this.state.loggedIn;
+    this.setState({ loggedIn });
   };
 
   render() {
     if (!this.state.loggedIn) {
-      return <Redirect to="/"></Redirect>;
+      return <Redirect to="/login"></Redirect>;
     }
     return (
       <>
         <ul>
-          <NavLink to="/home">Home</NavLink>
-          <NavLink to="/profile">Profile</NavLink>
-          <NavLink to="/userlist">Userlist</NavLink>
-          <button onClick={this.handleLogout}>Sign Out</button>
+          <NavLink
+            className="inline-block text-gray-700 text-center bg-gray-400 px-4 py-2 m-2"
+            to="/home"
+          >
+            Home
+          </NavLink>
+          <NavLink
+            className="inline-block text-gray-700 text-center bg-gray-400 px-4 py-2 m-2"
+            to="/profile"
+          >
+            Profile
+          </NavLink>
+          <NavLink
+            className="inline-block text-gray-700 text-center bg-gray-400 px-4 py-2 m-2"
+            to="/userlist"
+          >
+            Userlist
+          </NavLink>
+          <button
+            className="inline-block text-gray-700 text-center bg-gray-400 px-4 py-2 m-2"
+            onClick={this.handleLogout}
+          >
+            Sign Out
+          </button>
         </ul>
       </>
     );

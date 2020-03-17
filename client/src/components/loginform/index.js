@@ -87,7 +87,9 @@ class LoginForm extends Component {
               onChange={this.handleLoginInput}
               value={this.state.password}
             />
-            <button className="login-button">Login</button>
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              Login
+            </button>
           </form>
 
           <h2>Register</h2>
@@ -105,7 +107,9 @@ class LoginForm extends Component {
               onChange={this.handleRegisterInput}
               value={this.state.password}
             />
-            <button className="register-button">Register</button>
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              Register
+            </button>
           </form>
         </div>
       </div>

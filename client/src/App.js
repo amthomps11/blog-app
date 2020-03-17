@@ -7,11 +7,13 @@ import "./App.css";
 // import "bootstrap/dist/css/bootstrap-theme.css";
 
 //React Router
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { getUsers } from "./services/api-helper";
 
 //Components
 import UserProfile from "./components/userprofile";
+import NavBar from "./components/navbar";
+
 import LoginForm from "./components/loginform";
 import UserList from "./components/userlist";
 import OtherUser from "./components/otheruser";
@@ -37,9 +39,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="app-container">
-        <LoginForm />
+        <Redirect to="/login"></Redirect>
         <Switch>
-          {/* <Route exact path="/" component={App} /> */}
+          <Route exact path="/login" component={LoginForm} />
           <Route exact path="/home" component={Homepage} />
           <Route exact path="/profile" component={UserProfile} />
           <Route exact path="/userlist" component={UserList} />

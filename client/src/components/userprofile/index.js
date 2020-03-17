@@ -31,6 +31,7 @@ class UserProfile extends Component {
   };
 
   handleSubmit = async e => {
+    e.preventDefault();
     let postData = {
       post: {
         body: this.state.postInput,
@@ -38,6 +39,8 @@ class UserProfile extends Component {
       }
     };
     await submitPost(postData);
+    this.setState({ postInput: "" });
+    await this.getPosts();
   };
 
   render() {

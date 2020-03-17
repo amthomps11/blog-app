@@ -17,8 +17,13 @@ class UserList extends Component {
   renderUsers = () => {
     return this.state.users.map((user, index) => {
       return (
-        <div>
-          <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
+        <div className="bg-gray-200 p-4">
+          <NavLink
+            className="block text-gray-700 text-center bg-gray-400 px-4 py-2 hover:text-white hover:bg-blue-700"
+            to={`/users/${user.id}`}
+          >
+            {user.username}
+          </NavLink>
         </div>
       );
     });

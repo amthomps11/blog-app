@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Navbar from "../navbar";
+import Postcard from "../postcard";
 import { getFolloweesPosts } from "../../services/api-helper";
 
 class Homepage extends Component {
@@ -17,9 +18,10 @@ class Homepage extends Component {
     let { feed } = this.state;
     return feed.map(post => {
       return (
-        <div>
-          {post.body} by {post.user_restricted.username}
-        </div>
+        <Postcard
+          body={post.body}
+          username={post.user_restricted.username}
+        ></Postcard>
       );
     });
   };
