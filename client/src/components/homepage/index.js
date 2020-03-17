@@ -34,7 +34,9 @@ class Homepage extends Component {
     return (
       <div>
         <Navbar></Navbar>
-        Homepage
+
+        <h2 className="text-black text-center px-4 py-2 m-2">Homepage</h2>
+
         {this.renderTEMP()}
       </div>
     );

@@ -37,7 +37,8 @@ class UserList extends Component {
     return (
       <div>
         <NavBar></NavBar>
-        UserList
+        <h2 className="text-black text-center px-4 py-2 m-2">UserList</h2>
+        <hr className="mx-2"></hr>
         {this.renderUsers()}
       </div>
     );

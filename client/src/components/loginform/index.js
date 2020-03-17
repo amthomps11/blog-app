@@ -35,11 +35,11 @@ class LoginForm extends Component {
     await createUser({
       user: this.state.registerData
     });
-    // const userData = await loginUser(user);
-    // decode(userData.data.token);
-    // localStorage.setItem("jwt", userData.data.token);
-    // localStorage.setItem("userId", userData.data.userId);
-    // this.handleRegisterButton();
+    const userData = await loginUser(this.state.registerData);
+    decode(userData.data.token);
+    localStorage.setItem("jwt", userData.data.token);
+    localStorage.setItem("userId", userData.data.userId);
+    this.handleLoginButton();
   };
 
   handleLoginInput = async e => {
@@ -70,47 +70,69 @@ class LoginForm extends Component {
     }
 
     return (
-      <div className="login-component-wrapper">
-        <div className="login-container">
-          <h2>Login</h2>
-          <form onSubmit={this.handleLogin}>
-            <p>Username:</p>
-            <input
-              name="username"
-              onChange={this.handleLoginInput}
-              value={this.state.username}
-            />
-            <p>Password:</p>
-            <input
-              type="password"
-              name="password"
-              onChange={this.handleLoginInput}
-              value={this.state.password}
-            />
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-              Login
-            </button>
-          </form>
+      <div className="">
+        <div className="">
+          <div className="inline-block px-4 py-2 m-2 ">
+            <form
+              className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+              onSubmit={this.handleLogin}
+            >
+              <h2>Login</h2>
 
-          <h2>Register</h2>
-          <form onSubmit={this.handleRegister}>
-            <p>Username:</p>
-            <input
-              name="username"
-              onChange={this.handleRegisterInput}
-              value={this.state.username}
-            />
-            <p>Password:</p>
-            <input
-              type="password"
-              name="password"
-              onChange={this.handleRegisterInput}
-              value={this.state.password}
-            />
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-              Register
-            </button>
-          </form>
+              <label class="block text-gray-700 text-sm font-bold mb-2">
+                Username
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                name="username"
+                onChange={this.handleLoginInput}
+                value={this.state.username}
+              />
+              <label class="block text-gray-700 text-sm font-bold mb-2">
+                Password
+              </label>
+              <input
+                type="password"
+                name="password"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                onChange={this.handleLoginInput}
+                value={this.state.password}
+              />
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Login
+              </button>
+            </form>
+          </div>
+          <div className="inline-block px-4 py-2 m-2">
+            <form
+              onSubmit={this.handleRegister}
+              className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+            >
+              <h2>Register</h2>
+              <label class="block text-gray-700 text-sm font-bold mb-2">
+                Username
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                name="username"
+                onChange={this.handleRegisterInput}
+                value={this.state.username}
+              />
+              <label class="block text-gray-700 text-sm font-bold mb-2">
+                Password
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                type="password"
+                name="password"
+                onChange={this.handleRegisterInput}
+                value={this.state.password}
+              />
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Register
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     );

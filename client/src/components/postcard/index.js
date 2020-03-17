@@ -8,7 +8,7 @@ class Postcard extends Component {
 
   render() {
     return (
-      <div className="max-w-sm mx-auto p-6 bg-white rounded-lg shadow-xl">
+      <div className="max-w-sm mx-auto my-2 p-6 bg-white rounded-lg shadow-xl">
         <div className="block">{this.props.username}</div>
         <hr></hr>
         <div className="block">{this.props.body}</div>

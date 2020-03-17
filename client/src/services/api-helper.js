@@ -39,6 +39,15 @@ export const getUsers = async () => {
   }
 };
 
+export const getUsername = async userId => {
+  try {
+    const resp = await apiClient.get(`/users/${userId}`);
+    return resp.data;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 export const getUserPosts = async userId => {
   try {
     const resp = await apiClient.get(`/users/${userId}/posts`);

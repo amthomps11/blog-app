@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import NavBar from "../navbar";
-import { getUserPosts, followUser } from "../../services/api-helper";
+import Postcard from "../postcard";
+import {
+  getUserPosts,
+  followUser,
+  getUsername
+} from "../../services/api-helper";
 
 class OtherUser extends Component {
   constructor(props) {
     super(props);
-    this.state = { posts: [] };
+    this.state = { username: "", posts: [] };
   }
 
   getPosts = async () => {
@@ -14,13 +19,23 @@ class OtherUser extends Component {
   };
 
   renderPosts = () => {
+    let tempUsername = this.state.username;
     return this.state.posts.map((post, index) => {
-      return <div key={index}>{post.body}</div>;
+      return (
+        <Postcard
+          key={index}
+          username={tempUsername}
+          body={post.body}
+        ></Postcard>
+      );
     });
   };
 
   componentDidMount = async () => {
     await this.getPosts();
+    let user = await getUsername(parseInt(this.props.id));
+    let username = user.username;
+    await this.setState({ username });
   };
 
   handleFollowButton = async () => {
@@ -37,9 +52,15 @@ class OtherUser extends Component {
     return (
       <div>
         <NavBar></NavBar>
-        OtherUser
-        <button onClick={this.handleFollowButton}>Follow</button>
-        {this.props.id}
+        <div className="text-center">
+          <h2 className="text-black text-center px-4 py-2 m-2">{`${this.state.username}'s Profile`}</h2>
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            onClick={this.handleFollowButton}
+          >
+            Follow
+          </button>
+        </div>
         {this.renderPosts()}
       </div>
     );

@@ -29,25 +29,25 @@ class NavBar extends Component {
       <>
         <ul>
           <NavLink
-            className="inline-block text-gray-700 text-center bg-gray-400 px-4 py-2 m-2"
+            className="inline-block text-gray-700 text-center bg-gray-400 px-4 py-2 m-2 hover:bg-blue-700 hover:text-white"
             to="/home"
           >
             Home
           </NavLink>
           <NavLink
-            className="inline-block text-gray-700 text-center bg-gray-400 px-4 py-2 m-2"
+            className="inline-block text-gray-700 text-center bg-gray-400 px-4 py-2 m-2 hover:bg-blue-700 hover:text-white"
             to="/profile"
           >
             Profile
           </NavLink>
           <NavLink
-            className="inline-block text-gray-700 text-center bg-gray-400 px-4 py-2 m-2"
+            className="inline-block text-gray-700 text-center bg-gray-400 px-4 py-2 m-2 hover:bg-blue-700 hover:text-white"
             to="/userlist"
           >
             Userlist
           </NavLink>
           <button
-            className="inline-block text-gray-700 text-center bg-gray-400 px-4 py-2 m-2"
+            className="inline-block text-gray-700 text-center bg-gray-400 px-4 py-2 m-2 hover:bg-blue-700 hover:text-white"
             onClick={this.handleLogout}
           >
             Sign Out
