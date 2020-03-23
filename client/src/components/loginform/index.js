@@ -79,7 +79,7 @@ class LoginForm extends Component {
             >
               <h2>Login</h2>
 
-              <label class="block text-gray-700 text-sm font-bold mb-2">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
                 Username
               </label>
               <input
@@ -88,7 +88,7 @@ class LoginForm extends Component {
                 onChange={this.handleLoginInput}
                 value={this.state.username}
               />
-              <label class="block text-gray-700 text-sm font-bold mb-2">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
                 Password
               </label>
               <input
@@ -109,7 +109,7 @@ class LoginForm extends Component {
               className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
             >
               <h2>Register</h2>
-              <label class="block text-gray-700 text-sm font-bold mb-2">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
                 Username
               </label>
               <input
@@ -118,7 +118,7 @@ class LoginForm extends Component {
                 onChange={this.handleRegisterInput}
                 value={this.state.username}
               />
-              <label class="block text-gray-700 text-sm font-bold mb-2">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
                 Password
               </label>
               <input

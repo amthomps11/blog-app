@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import {
   getUserPosts,
   submitPost,
-  getUsername
+  getUsername,
+  deletePost
 } from "../../services/api-helper";
 import NavBar from "../navbar";
 import Postcard from "../postcard";
@@ -22,7 +23,13 @@ class UserProfile extends Component {
     let posts = await getUserPosts(localStorage.getItem("userId"));
     let user = await getUsername(localStorage.getItem("userId"));
     let username = user.username;
-    this.setState({ username, posts });
+    await this.setState({ username, posts });
+  };
+
+  handleDelete = async id => {
+    await deletePost(id);
+
+    await this.getPosts();
   };
 
   renderPosts = () => {
@@ -30,6 +37,9 @@ class UserProfile extends Component {
       return (
         <Postcard
           key={index}
+          selfPost={true}
+          postId={post.id}
+          deleteFunction={this.handleDelete}
           username={this.state.username}
           userId={localStorage.getItem("userId")}
           created_at={post.created_at}
@@ -59,7 +69,7 @@ class UserProfile extends Component {
       }
     };
     await submitPost(postData);
-    this.setState({ postInput: "" });
+    await this.setState({ postInput: "" });
     await this.getPosts();
   };
 

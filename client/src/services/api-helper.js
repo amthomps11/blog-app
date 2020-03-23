@@ -65,6 +65,14 @@ export const submitPost = async postData => {
   }
 };
 
+export const deletePost = async postID => {
+  try {
+    await apiClient.delete(`/posts/${postID}`);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 export const followUser = async followData => {
   try {
     await apiClient.post("/follows", followData);

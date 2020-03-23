@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import "./postcard.css";
+import { withRouter } from "react-router-dom";
 
 class Postcard extends Component {
   constructor(props) {
     super(props);
+    this.state = { deleted: false };
   }
 
   render() {
@@ -13,6 +15,11 @@ class Postcard extends Component {
         <NavLink className="text-blue-700" to={`/users/${this.props.userId}`}>
           {this.props.username}
         </NavLink>
+        {this.props.selfPost ? (
+          <button onClick={() => this.props.deleteFunction(this.props.postId)}>
+            delete
+          </button>
+        ) : null}
         <hr></hr>
         <div className="block">{this.props.body}</div>
         <hr></hr>
