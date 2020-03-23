@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://morning-garden-06754";
 
 const JWT_TOKEN = localStorage.getItem("token");
 
