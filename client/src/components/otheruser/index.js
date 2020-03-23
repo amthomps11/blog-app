@@ -24,8 +24,10 @@ class OtherUser extends Component {
       return (
         <Postcard
           key={index}
+          userId={this.props.id}
           username={tempUsername}
           body={post.body}
+          created_at={post.created_at}
         ></Postcard>
       );
     });

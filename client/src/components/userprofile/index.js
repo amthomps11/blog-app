@@ -31,6 +31,8 @@ class UserProfile extends Component {
         <Postcard
           key={index}
           username={this.state.username}
+          userId={localStorage.getItem("userId")}
+          created_at={post.created_at}
           body={post.body}
         ></Postcard>
       );

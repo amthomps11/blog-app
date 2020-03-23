@@ -20,7 +20,9 @@ class Homepage extends Component {
       return (
         <Postcard
           body={post.body}
+          userId={post.user_restricted.id}
           username={post.user_restricted.username}
+          created_at={post.created_at}
         ></Postcard>
       );
     });
