@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "http://morning-garden-06754";
+const BASE_URL = "http://localhost:3000/";
 
 const JWT_TOKEN = localStorage.getItem("token");
 
@@ -73,13 +73,14 @@ export const followUser = async followData => {
   }
 };
 
-// export const getFollowees = async id => {
-//   try {
-//     let data = await apiClient.get(`/followees/${id}`);
-//   } catch (e) {
-//     console.log(e);
-//   }
-// };
+export const getFollowees = async id => {
+  try {
+    let resp = await apiClient.get(`/followees/${id}`);
+    return resp.data;
+  } catch (e) {
+    console.log(e);
+  }
+};
 
 export const getFolloweesPosts = async id => {
   try {
@@ -90,4 +91,11 @@ export const getFolloweesPosts = async id => {
   }
 };
 
-// export const getFollowers = async () => {};
+export const getFollowers = async id => {
+  try {
+    let resp = await apiClient.get(`/followersonly/${id}`);
+    return resp.data;
+  } catch (e) {
+    console.log(e);
+  }
+};

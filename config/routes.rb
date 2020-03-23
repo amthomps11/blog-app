@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   get '/followers/:id', to: "follows#getFollowersOfUser"
   get '/followeeposts2/:id', to: "follows#getFolloweePostsOfUserTry2"
+  get 'followersonly/:id', to: "follows#getJustFollowersOfUser"
 
 
   post '/auth/login', to: 'authentication#login'

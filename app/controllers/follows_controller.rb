@@ -31,7 +31,6 @@ class FollowsController < ApplicationController
       def getFolloweesOfUser
         @followees = User.select(:username,:id).joins("INNER JOIN follows On followee_id = users.id AND follows.follower_id=#{params[:id]}")
         render json: @followees
-
       end 
 
 
@@ -45,6 +44,12 @@ class FollowsController < ApplicationController
       def getFollowersOfUser
         @follows = Follow.where("followee_id= #{params[:id]}")
           render json: @follows, include: [:follower=>{include:[:posts]}]
+      end 
+
+
+      def getJustFollowersOfUser
+        @follows = Follow.where("followee_id= #{params[:id]}")
+          render json: @follows
       end 
     
   
