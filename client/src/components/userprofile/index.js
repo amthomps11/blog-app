@@ -91,7 +91,7 @@ class UserProfile extends Component {
           {`${this.state.username}'s profile`}
           <input type="file" onChange={this.handleFileUpload}></input>
         </h2>
-        <div>{`${this.state.followers.length} followers and following ${this.state.followees.length}`}</div>
+        {/* <div>{`${this.state.followers.length} followers and following ${this.state.followees.length}`}</div> */}
 
         <form className="text-center" onSubmit={this.handleSubmit}>
           <input
