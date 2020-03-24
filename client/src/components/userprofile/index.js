@@ -3,7 +3,9 @@ import {
   getUserPosts,
   submitPost,
   getUsername,
-  deletePost
+  deletePost,
+  getFollowees,
+  getFollowers
 } from "../../services/api-helper";
 import NavBar from "../navbar";
 import Postcard from "../postcard";
@@ -15,7 +17,9 @@ class UserProfile extends Component {
       username: "",
       posts: [],
       currentlyLoggedInUser: false,
-      postInput: ""
+      postInput: "",
+      followees: [],
+      followers: []
     };
   }
 
@@ -28,7 +32,6 @@ class UserProfile extends Component {
 
   handleDelete = async id => {
     await deletePost(id);
-
     await this.getPosts();
   };
 
@@ -50,6 +53,9 @@ class UserProfile extends Component {
   };
 
   componentDidMount = async () => {
+    let followees = await getFollowees(localStorage.getItem("userId"));
+    let followers = await getFollowers(localStorage.getItem("userId"));
+    await this.setState({ followees, followers });
     await this.getPosts();
   };
 
@@ -58,6 +64,10 @@ class UserProfile extends Component {
     this.setState(prevState => ({
       postInput: value
     }));
+  };
+
+  handleFileUpload = e => {
+    console.log(e.target);
   };
 
   handleSubmit = async e => {
@@ -77,10 +87,12 @@ class UserProfile extends Component {
     return (
       <div>
         <NavBar></NavBar>
-
         <h2 className="text-black text-center px-4 py-2 m-2">
           {`${this.state.username}'s profile`}
+          <input type="file" onChange={this.handleFileUpload}></input>
         </h2>
+        <div>{`${this.state.followers.length} followers and following ${this.state.followees.length}`}</div>
+
         <form className="text-center" onSubmit={this.handleSubmit}>
           <input
             placeholder="new post"
