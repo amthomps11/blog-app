@@ -1,4 +1,8 @@
 Rails.application.configure do
+  config.action_mailer.default_url_options = { host: "localhost:3000" }
+  Rails.application.routes.default_url_options[:host] = "localhost:3000"
+
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -41,6 +45,7 @@ Rails.application.configure do
 
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
+
 
 
   # Raises error for missing translations.

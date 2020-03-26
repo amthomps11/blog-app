@@ -37,13 +37,11 @@ class OtherUser extends Component {
 
   componentDidMount = async () => {
     await this.getPosts();
-    // let followees = await getFollowees(this.props.id);
-    // let followers = await getFollowers(this.props.id);
+    let followees = await getFollowees(this.props.id);
+    let followers = await getFollowers(this.props.id);
     let user = await getUsername(parseInt(this.props.id));
     let username = user.username;
-    await this.setState({ username });
-
-    // await this.setState({ username, followees, followers });
+    await this.setState({ username, followees, followers });
   };
 
   handleFollowButton = async () => {

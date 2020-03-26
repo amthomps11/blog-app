@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "https://morning-garden-06754.herokuapp.com/";
+const BASE_URL = "http://localhost:3000/";
 
 const JWT_TOKEN = localStorage.getItem("token");
 
@@ -103,6 +103,30 @@ export const getFollowers = async id => {
   try {
     let resp = await apiClient.get(`/followersonly/${id}`);
     return resp.data;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const postPhoto = async (id, userData) => {
+  try {
+    fetch(`${BASE_URL}/uploader/${id}}`, {
+      method: "PATCH",
+      body: userData
+    })
+      .then(res => res.json())
+      .then(data => {
+        return data;
+      });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const getPhoto = async id => {
+  try {
+    let resp = await apiClient.get(`/users/${id}`);
+    return resp.data.image.url;
   } catch (e) {
     console.log(e);
   }

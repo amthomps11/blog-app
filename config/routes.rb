@@ -4,6 +4,15 @@ Rails.application.routes.draw do
   get '/users/:id', to: "users#show"
   get '/users/:id/posts', to: "users#show_posts"
   post '/users', to:"users#create"
+  patch '/users/:id', to: "users#update"
+  get  '/userpic/:id', to: "users#showimage"
+  # put '/users/:id', to: "users#updatephoto"
+
+  patch 'uploader/:id', to: 'uploader#update'
+
+  
+  get '/usersimage/:id', to: "users#showimage"
+
   delete '/users/:id', to:"users#destroy"
 
   get '/posts', to: "posts#index"

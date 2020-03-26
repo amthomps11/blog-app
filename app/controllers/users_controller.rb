@@ -1,12 +1,19 @@
 class UsersController < ApplicationController
   def index
     @user = User.all()
-    render json: @user, include: [:posts, :followers, :followees]
+    render json: @user, include: [:id, :posts]
    end
 
+   
    def show
     @user = User.find(params[:id])
     render json: @user, include: [:posts]
+   end
+
+
+   def showimage
+    @user = User.find(params[:id])
+    render json: @user.image
    end
 
 
@@ -35,10 +42,19 @@ class UsersController < ApplicationController
     render json: @posts
    end
 
+
+   def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    render json: @user
+  end
+
+  
+
    private
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:username, :password, :image)
   end
 
 
