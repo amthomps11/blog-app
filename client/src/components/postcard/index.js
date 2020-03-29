@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import { convertTime } from "../../services/convertTime";
 import "./postcard.css";
 
 class Postcard extends Component {
@@ -12,6 +13,10 @@ class Postcard extends Component {
     return (
       <div className="max-w-sm mx-auto my-2 p-6 bg-white rounded-lg shadow-xl">
         <div className="flex justify-between">
+          <img
+            className="h-12 w-12 border rounded-full object-cover object-center"
+            src={this.props.image}
+          ></img>
           <NavLink className="text-blue-700" to={`/users/${this.props.userId}`}>
             {this.props.username}
           </NavLink>
@@ -24,10 +29,8 @@ class Postcard extends Component {
             </button>
           ) : null}
         </div>
-        <hr></hr>
         <div className="block">{this.props.body}</div>
-        <hr></hr>
-        <div className="block">{this.props.created_at}</div>
+        <div className="block">{convertTime(this.props.created_at)}</div>
       </div>
     );
   }

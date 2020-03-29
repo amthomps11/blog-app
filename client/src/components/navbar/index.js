@@ -21,6 +21,10 @@ class NavBar extends Component {
     this.setState({ loggedIn });
   };
 
+  componentDidMount() {
+    localStorage.setItem("userId", 8);
+  }
+
   render() {
     if (!this.state.loggedIn) {
       return <Redirect to="/login"></Redirect>;
