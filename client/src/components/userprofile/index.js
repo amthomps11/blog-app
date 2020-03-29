@@ -45,6 +45,7 @@ class UserProfile extends Component {
       return (
         <Postcard
           key={index}
+          image={this.state.selectedImage}
           selfPost={true}
           postId={post.id}
           deleteFunction={this.handleDelete}
@@ -63,12 +64,9 @@ class UserProfile extends Component {
     await this.setState({ followees, followers });
     await this.getPosts();
     let selectedImage = await getPhoto(localStorage.getItem("userId"));
-    console.log(selectedImage);
     if (!selectedImage) {
       selectedImage = picture;
     }
-    console.log(selectedImage);
-
     await this.setState({ selectedImage });
   };
 
@@ -110,8 +108,17 @@ class UserProfile extends Component {
           <input type="file" onChange={this.handleSelectUpload}></input>
         </h2>
         <div>{`${this.state.followers.length} followers and following ${this.state.followees.length}`}</div>
-        <img src={this.state.selectedImage}></img>
-        <form className="text-center" onSubmit={this.handleSubmit}>
+
+        <form
+          className="text-center bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+          onSubmit={this.handleSubmit}
+        >
+          <img
+            className="h-32 w-32 border rounded-full object-cover object-center"
+            src={this.state.selectedImage}
+            alt={picture}
+          ></img>
+
           <textarea
             placeholder="new post"
             onChange={this.handleInput}

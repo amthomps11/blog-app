@@ -9,7 +9,7 @@ class LoginForm extends Component {
     this.state = {
       authData: { username: "", password: "" },
       registerData: { username: "", password: "" },
-      loggedIn: false
+      loggedIn: true
     };
   }
 
