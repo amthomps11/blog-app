@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "https://morning-garden-06754.herokuapp.com/";
+const BASE_URL = "https://enigmatic-springs-53729.herokuapp.com/";
 
 const JWT_TOKEN = localStorage.getItem("token");
 

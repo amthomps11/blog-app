@@ -5,8 +5,8 @@
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.action_mailer.default_url_options = { host: "https://morning-garden-06754.herokuapp.com/" }
-  Rails.application.routes.default_url_options[:host] = "https://morning-garden-06754.herokuapp.com/"
+  config.action_mailer.default_url_options = { host: "https://enigmatic-springs-53729.herokuapp.com/" }
+  Rails.application.routes.default_url_options[:host] = "https://enigmatic-springs-53729.herokuapp.com/"
 
 
   config.cache_classes = false
