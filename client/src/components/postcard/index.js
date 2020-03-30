@@ -6,8 +6,10 @@ import "./postcard.css";
 class Postcard extends Component {
   constructor(props) {
     super(props);
-    this.state = { deleted: false };
+    this.state = { deleted: false, userImage: null };
   }
+
+  componentDidMount() {}
 
   render() {
     return (

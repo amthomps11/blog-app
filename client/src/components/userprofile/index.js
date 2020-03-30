@@ -137,7 +137,6 @@ class UserProfile extends Component {
                   {`${this.state.username}'s profile`}
                 </div>
                 <div className="block">{`${this.state.followers.length} followers and following ${this.state.followees.length}`}</div>
-                <div></div>
               </div>
             </div>
             <form

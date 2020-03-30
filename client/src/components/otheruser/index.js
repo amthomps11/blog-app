@@ -6,13 +6,21 @@ import {
   followUser,
   getUsername,
   getFollowees,
-  getFollowers
+  getFollowers,
+  getPhoto
 } from "../../services/api-helper";
+import picture from "../userprofile/default.png";
 
 class OtherUser extends Component {
   constructor(props) {
     super(props);
-    this.state = { username: "", posts: [], followees: [], followers: [] };
+    this.state = {
+      username: "",
+      posts: [],
+      followees: [],
+      followers: [],
+      selectedImage: null
+    };
   }
 
   getPosts = async () => {
@@ -26,6 +34,7 @@ class OtherUser extends Component {
       return (
         <Postcard
           key={index}
+          image={this.state.selectedImage}
           userId={this.props.id}
           username={tempUsername}
           body={post.body}
@@ -42,6 +51,11 @@ class OtherUser extends Component {
     let user = await getUsername(parseInt(this.props.id));
     let username = user.username;
     await this.setState({ username, followees, followers });
+    let selectedImage = await getPhoto(this.props.id);
+    if (!selectedImage) {
+      selectedImage = picture;
+    }
+    await this.setState({ selectedImage });
   };
 
   handleFollowButton = async () => {
@@ -56,19 +70,36 @@ class OtherUser extends Component {
   };
   render() {
     return (
-      <div>
-        <NavBar></NavBar>
-        <div className="text-center">
-          <h2 className="text-black text-center px-4 py-2 m-2">{`${this.state.username}'s Profile`}</h2>
-          <div>{`${this.state.followers.length} followers and following ${this.state.followees.length}`}</div>
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            onClick={this.handleFollowButton}
-          >
-            Follow
-          </button>
+      <div className="w-full">
+        <div className="block w-1/4 my-8 fixed">
+          <NavBar></NavBar>
         </div>
-        {this.renderPosts()}
+        <div className="block w-1/2 m-auto">
+          <div className="my-5 border-b border-grey-300  mb-5 flex flex-column justify-around">
+            <div className="relative">
+              <img
+                className="relative h-48 w-48 border rounded-full object-cover object-center"
+                src={this.state.selectedImage}
+                alt={picture}
+              ></img>
+            </div>
+            <div className="m-auto ">
+              <div className="block text-black text-lg font-bold text-center">
+                {`${this.state.username}'s profile`}
+              </div>
+              <div className="block">{`${this.state.followers.length} followers and following ${this.state.followees.length}`}</div>
+              <div className="w-full text-center">
+                <button
+                  className="bg-blue-500 hover:bg-blue-700 m-auto rounded-full text-white font-bold py-2 px-4 rounded"
+                  onClick={this.handleFollowButton}
+                >
+                  Follow
+                </button>
+              </div>
+            </div>
+          </div>
+          {this.renderPosts()}
+        </div>
       </div>
     );
   }
