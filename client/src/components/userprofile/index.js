@@ -77,6 +77,8 @@ class UserProfile extends Component {
     }));
   };
 
+  // handleSelectFile = async event => {};
+
   handleSelectUpload = async event => {
     await this.setState({ selectedFile: event.target.files[0] });
     const formData = new FormData();
@@ -101,35 +103,73 @@ class UserProfile extends Component {
 
   render() {
     return (
-      <div>
-        <NavBar></NavBar>
-        <h2 className="text-black text-center px-4 py-2 m-2">
-          {`${this.state.username}'s profile`}
-          <input type="file" onChange={this.handleSelectUpload}></input>
-        </h2>
-        <div>{`${this.state.followers.length} followers and following ${this.state.followees.length}`}</div>
-
-        <form
-          className="text-center bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-          onSubmit={this.handleSubmit}
-        >
-          <img
-            className="h-32 w-32 border rounded-full object-cover object-center"
-            src={this.state.selectedImage}
-            alt={picture}
-          ></img>
-
-          <textarea
-            placeholder="new post"
-            onChange={this.handleInput}
-            value={this.state.postInput}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          ></textarea>
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            submit post
-          </button>
-        </form>
-        {this.renderPosts()}
+      <div className="w-full">
+        <div className="flex flex-column">
+          <div className="block w-1/4 my-8 fixed">
+            <NavBar></NavBar>
+          </div>
+          <div className="block w-1/2 m-auto">
+            <div className="my-5 border-b border-grey-300  mb-5 flex flex-column justify-around">
+              <div className="relative">
+                <img
+                  className="relative h-48 w-48 border rounded-full object-cover object-center"
+                  src={this.state.selectedImage}
+                  alt={picture}
+                ></img>
+                <label className="absolute bottom-0 right-0 w-16 h-16 flex flex-col items-center px-4 py-6 bg-white text-blue-500 rounded-lg shadow-lg tracking-wide uppercase border border-blue-500 cursor-pointer hover:bg-blue-500 hover:text-white rounded-full">
+                  <svg
+                    className="w-8 h-8"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                  </svg>
+                  <input
+                    onChange={this.handleSelectUpload}
+                    type="file"
+                    class="hidden"
+                  />
+                </label>
+              </div>
+              <div className="m-auto">
+                <div className="block text-black text-lg font-bold text-center">
+                  {`${this.state.username}'s profile`}
+                </div>
+                <div className="block">{`${this.state.followers.length} followers and following ${this.state.followees.length}`}</div>
+                <div></div>
+              </div>
+            </div>
+            <form
+              className="text-center bg-white border-b border-grey-300 mb-4"
+              onSubmit={this.handleSubmit}
+            >
+              <div className="flex flex-row">
+                <div className="block w-12 min-w-12 mx-2">
+                  <img
+                    className="block h-12 w-12 border rounded-full object-cover object-center"
+                    src={this.state.selectedImage}
+                    alt={picture}
+                  ></img>
+                </div>
+                <div className="block w-4/5 mx-4">
+                  <input
+                    placeholder="New Post"
+                    onChange={this.handleInput}
+                    value={this.state.postInput}
+                    className="block w-full appearance-none rounded w-4/5 my-2 py-2 text-gray-700 leading-tight focus:outline-none focus:border-none"
+                  ></input>
+                </div>
+              </div>
+              <div className="flex flex-row justify-end">
+                <button className="bg-blue-500 mx-4 hover:bg-blue-700 text-white font-bold mb-2 py-2 px-4 rounded-full">
+                  Submit post
+                </button>
+              </div>
+            </form>
+            {this.renderPosts()}
+          </div>
+        </div>
       </div>
     );
   }

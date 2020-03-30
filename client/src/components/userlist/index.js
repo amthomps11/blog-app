@@ -35,11 +35,16 @@ class UserList extends Component {
 
   render() {
     return (
-      <div>
-        <NavBar></NavBar>
-        <h2 className="text-black text-center px-4 py-2 m-2">UserList</h2>
-        <hr className="mx-2"></hr>
-        {this.renderUsers()}
+      <div className="w-full">
+        <div className="flex flex-column">
+          <div className="block w-1/4 my-8">
+            <NavBar></NavBar>
+          </div>
+          <div className="block">
+            <h2 className="text-black text-center px-4 py-2 m-2">UserList</h2>
+            {this.renderUsers()}
+          </div>
+        </div>
       </div>
     );
   }

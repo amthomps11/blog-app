@@ -21,33 +21,41 @@ class NavBar extends Component {
     this.setState({ loggedIn });
   };
 
+  // componentDidMount() {
+  //   localStorage.setItem("userId", 5);
+  // }
+
   render() {
     if (!this.state.loggedIn) {
       return <Redirect to="/login"></Redirect>;
     }
     return (
       <>
-        <ul>
+        <ul className="border-r border-grey-300 mx-auto container">
           <NavLink
-            className="inline-block text-gray-700 text-center bg-gray-400 px-4 py-2 m-2 hover:bg-blue-700 hover:text-white"
+            className="block w-1/2 text-gray-700 text-center px-4 py-2 mx-auto rounded-full hover:bg-blue-200 hover:text-blue-500"
+            activeClassName="text-blue-500"
             to="/home"
           >
             Home
           </NavLink>
           <NavLink
-            className="inline-block text-gray-700 text-center bg-gray-400 px-4 py-2 m-2 hover:bg-blue-700 hover:text-white"
+            className="block w-1/2 text-gray-700 text-center px-4 py-2 mx-auto rounded-full hover:bg-blue-200 hover:text-blue-500"
+            activeClassName="text-blue-500"
             to="/profile"
           >
             Profile
           </NavLink>
           <NavLink
-            className="inline-block text-gray-700 text-center bg-gray-400 px-4 py-2 m-2 hover:bg-blue-700 hover:text-white"
+            className="block w-1/2 text-gray-700 text-center px-4 py-2 mx-auto rounded-full hover:bg-blue-200 hover:text-blue-500"
+            activeClassName="text-blue-500"
             to="/userlist"
           >
             Userlist
           </NavLink>
           <button
-            className="inline-block text-gray-700 text-center bg-gray-400 px-4 py-2 m-2 hover:bg-blue-700 hover:text-white"
+            className="block w-1/2 text-gray-700 text-center px-4 py-2 mx-auto rounded-full hover:bg-blue-200 hover:text-blue-500"
+            activeClassName="text-blue-500"
             onClick={this.handleLogout}
           >
             Sign Out

@@ -34,12 +34,16 @@ class Homepage extends Component {
 
   render() {
     return (
-      <div>
-        <Navbar></Navbar>
-
-        <h2 className="text-black text-center px-4 py-2 m-2">Homepage</h2>
-
-        {this.renderTEMP()}
+      <div className="w-full">
+        <div className="flex flex-column">
+          <div className="block w-1/4 my-8">
+            <Navbar></Navbar>
+          </div>
+          <div className="block">
+            <h2 className="text-black text-center px-4 py-2 m-2">Homepage</h2>
+            {this.renderTEMP()}
+          </div>
+        </div>
       </div>
     );
   }
