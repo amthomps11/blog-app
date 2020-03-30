@@ -110,7 +110,7 @@ export const getFollowers = async id => {
 
 export const postPhoto = async (id, userData) => {
   try {
-    fetch(`${BASE_URL}/uploader/${id}}`, {
+    await fetch(`${BASE_URL}/uploader/${id}`, {
       method: "PATCH",
       body: userData
     })

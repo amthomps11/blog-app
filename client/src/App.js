@@ -12,7 +12,6 @@ import { getUsers } from "./services/api-helper";
 
 //Components
 import UserProfile from "./components/userprofile";
-
 import LoginForm from "./components/loginform";
 import UserList from "./components/userlist";
 import OtherUser from "./components/otheruser";

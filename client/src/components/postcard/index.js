@@ -6,31 +6,43 @@ import "./postcard.css";
 class Postcard extends Component {
   constructor(props) {
     super(props);
-    this.state = { deleted: false };
+    this.state = { deleted: false, userImage: null };
   }
+
+  componentDidMount() {}
 
   render() {
     return (
-      <div className="max-w-sm mx-auto my-2 p-6 bg-white rounded-lg shadow-xl">
-        <div className="flex justify-between">
-          <img
-            className="h-12 w-12 border rounded-full object-cover object-center"
-            src={this.props.image}
-          ></img>
-          <NavLink className="text-blue-700" to={`/users/${this.props.userId}`}>
-            {this.props.username}
-          </NavLink>
-          {this.props.selfPost ? (
-            <button
-              className="text-white bg-red-500 rounded"
-              onClick={() => this.props.deleteFunction(this.props.postId)}
+      <div className="w-lg mx-auto my-2 bg-white border-b border-grey-300">
+        <div className="flex flex-row">
+          <div className="block w-12 min-w-12 mx-2">
+            <img
+              className="h-12 w-12 border rounded-full object-cover object-center"
+              src={this.props.image}
+            ></img>
+          </div>
+          <div className="block w-4/5 mx-4">
+            <NavLink
+              className="text-blue-700"
+              to={`/users/${this.props.userId}`}
             >
-              X
-            </button>
-          ) : null}
+              {this.props.username}
+            </NavLink>
+
+            <div className="block">{this.props.body}</div>
+            <div className="flex flex-row justify-between text-gray-600">
+              {convertTime(this.props.created_at)}
+              {this.props.selfPost ? (
+                <button
+                  className="text-gray-600 rounded position-top-right"
+                  onClick={() => this.props.deleteFunction(this.props.postId)}
+                >
+                  Delete
+                </button>
+              ) : null}
+            </div>
+          </div>
         </div>
-        <div className="block">{this.props.body}</div>
-        <div className="block">{convertTime(this.props.created_at)}</div>
       </div>
     );
   }
