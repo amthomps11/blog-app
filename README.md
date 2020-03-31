@@ -6,4 +6,6 @@ Create Account, make posts and follow other so you can see Their posts in your h
 
 twitter-blog-clone.surge.sh
 
-![Sample Prpfile](https://imgur.com/a/4nf1ook)
+
+Sample Profile
+<img src="https://imgur.com/a/4nf1ook"/>
