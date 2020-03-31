@@ -17,6 +17,7 @@ export const loginUser = async loginData => {
     );
     return resp;
   } catch (e) {
+    alert("Incorrect Username or Password");
     throw e;
   }
 };
@@ -127,6 +128,23 @@ export const getPhoto = async id => {
   try {
     let resp = await apiClient.get(`/users/${id}`);
     return resp.data.image.url;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const getFollowId = async (id, followee_id) => {
+  try {
+    let resp = await apiClient.get(`/getfollowid/${id}/${followee_id}`);
+    return resp.data;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const deleteFollow = async id => {
+  try {
+    await apiClient.delete(`/follows/${id}`);
   } catch (e) {
     console.log(e);
   }

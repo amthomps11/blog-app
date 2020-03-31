@@ -7,7 +7,9 @@ import {
   getUsername,
   getFollowees,
   getFollowers,
-  getPhoto
+  getPhoto,
+  getFollowId,
+  deleteFollow
 } from "../../services/api-helper";
 import picture from "../userprofile/default.png";
 
@@ -20,7 +22,8 @@ class OtherUser extends Component {
       followees: [],
       followers: [],
       selectedImage: null,
-      isFollowing: false
+      isFollowing: false,
+      followid: null
     };
   }
 
@@ -47,6 +50,14 @@ class OtherUser extends Component {
 
   componentDidMount = async () => {
     await this.getPosts();
+    let followingId = await getFollowId(
+      localStorage.getItem("userId"),
+      this.props.id
+    );
+    if (followingId.length != 0) {
+      await this.setState({ isFollowing: true });
+      await this.setState({ followid: followingId[0].id });
+    }
     let followees = await getFollowees(this.props.id);
     let followers = await getFollowers(this.props.id);
     let user = await getUsername(parseInt(this.props.id));
@@ -68,16 +79,23 @@ class OtherUser extends Component {
       }
     };
     await followUser(data);
+    await this.setState({ isFollowing: true });
+    let followees = await getFollowees(this.props.id);
+    let followers = await getFollowers(this.props.id);
+    await this.setState({ followees, followers });
+    let followingId = await getFollowId(
+      localStorage.getItem("userId"),
+      this.props.id
+    );
+    await this.setState({ followid: followingId[0].id });
   };
 
   handleUnFollowButton = async () => {
-    let userId = localStorage.getItem("userId");
-    let data = {
-      follow: {
-        followee_id: this.props.id,
-        follower_id: userId
-      }
-    };
+    await deleteFollow(this.state.followid);
+    await this.setState({ isFollowing: false });
+    let followees = await getFollowees(this.props.id);
+    let followers = await getFollowers(this.props.id);
+    await this.setState({ followees, followers });
   };
 
   render() {
@@ -101,12 +119,21 @@ class OtherUser extends Component {
               </div>
               <div className="block">{`${this.state.followers.length} followers and following ${this.state.followees.length}`}</div>
               <div className="w-full text-center">
-                <button
-                  className="bg-blue-500 hover:bg-blue-700 m-auto rounded-full text-white font-bold py-2 px-4 rounded"
-                  onClick={this.handleFollowButton}
-                >
-                  Follow
-                </button>
+                {this.state.isFollowing ? (
+                  <button
+                    className="bg-white-500 hover:bg-blue-500 hover:text-white m-auto border border-blue-500 rounded-full text-blue-500 font-bold py-2 px-4 rounded"
+                    onClick={this.handleUnFollowButton}
+                  >
+                    Unfollow
+                  </button>
+                ) : (
+                  <button
+                    className="bg-blue-500 hover:bg-blue-700 m-auto rounded-full text-white font-bold py-2 px-4 rounded"
+                    onClick={this.handleFollowButton}
+                  >
+                    Follow
+                  </button>
+                )}
               </div>
             </div>
           </div>
