@@ -6,4 +6,4 @@ Create Account, make posts and follow other so you can see Their posts in your h
 
 twitter-blog-clone.surge.sh
 
-![Image description]https://imgur.com/a/4nf1ook
+![Image description](https://imgur.com/a/4nf1ook)
