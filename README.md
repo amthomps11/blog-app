@@ -1,24 +1,7 @@
-# README
+## Blog/Twitter Clone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Create Account, make posts and follow other so you can see Their posts in your home feed
 
-Things you may want to cover:
+## Demo
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+twitter-blog-clone.surge.sh
