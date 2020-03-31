@@ -8,4 +8,5 @@ twitter-blog-clone.surge.sh
 
 
 Sample Profile
-<img src="https://imgur.com/a/4nf1ook"/>
+![Sample Profile](https://imgur.com/a/4nf1ook.png)
+
