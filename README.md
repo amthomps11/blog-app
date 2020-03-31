@@ -7,7 +7,7 @@ Create Account, make posts and follow other so you can see Their posts in your h
 <a href="twitter-blog-clone.surge.sh">Demo Link</a>
 
 
-##Sample Profile
+## Sample Profile
 
 ![Imgur](https://i.imgur.com/iadCKZr.png)
 
