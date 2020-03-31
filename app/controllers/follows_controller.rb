@@ -36,7 +36,7 @@ class FollowsController < ApplicationController
       def getFollowId
         @follow = Follow.where("follower_id=#{params[:id]} AND followee_id=#{params[:followee_id]}")
         render json: @follow
-      def end
+      end
 
 
       def getFolloweePostsOfUser
