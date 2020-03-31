@@ -19,7 +19,8 @@ class OtherUser extends Component {
       posts: [],
       followees: [],
       followers: [],
-      selectedImage: null
+      selectedImage: null,
+      isFollowing: false
     };
   }
 
@@ -68,6 +69,17 @@ class OtherUser extends Component {
     };
     await followUser(data);
   };
+
+  handleUnFollowButton = async () => {
+    let userId = localStorage.getItem("userId");
+    let data = {
+      follow: {
+        followee_id: this.props.id,
+        follower_id: userId
+      }
+    };
+  };
+
   render() {
     return (
       <div className="w-full">

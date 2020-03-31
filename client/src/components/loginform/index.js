@@ -72,13 +72,13 @@ class LoginForm extends Component {
     return (
       <div className="">
         <div className="">
+          <div className="text-center m-5 text-lg">Twitter-Blog-Clone</div>
           <div className="inline-block px-4 py-2 m-2 ">
             <form
               className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
               onSubmit={this.handleLogin}
             >
               <h2>Login</h2>
-
               <label className="block text-gray-700 text-sm font-bold mb-2">
                 Username
               </label>
