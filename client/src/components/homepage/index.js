@@ -59,6 +59,7 @@ class Homepage extends Component {
           <div className="block w-1/2 m-auto">
             <h2 className="text-black text-center px-4 py-2 m-2">Homepage</h2>
             {this.renderTEMP()}
+            this is a test
           </div>
         </div>
       </div>
